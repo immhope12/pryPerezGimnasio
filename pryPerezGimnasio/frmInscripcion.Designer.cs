@@ -1,4 +1,4 @@
-﻿namespace pryLencinaGimnasio
+﻿namespace pryPerezGimnasio
 {
 
     partial class frmInscripcion

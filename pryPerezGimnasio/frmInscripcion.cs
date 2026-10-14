@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace pryLencinaGimnasio
+namespace pryPerezGimnasio
 {
     // STRUCT
     public struct Socio

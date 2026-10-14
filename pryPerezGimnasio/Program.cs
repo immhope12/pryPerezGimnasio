@@ -1,4 +1,4 @@
-using pryLencinaGimnasio;
+using pryPerezGimnasio;
 
 namespace pryPerezGimnasio
 {
