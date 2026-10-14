@@ -58,6 +58,10 @@ namespace pryPerezGimnasio
             rbtEfectivo.Checked = true;
             cboxCuotas.Enabled = false;
             cboxCuotas.SelectedIndex = -1;
+            
+            lstClientes.Items.Clear();
+
+            
 
 
         }
@@ -212,9 +216,9 @@ namespace pryPerezGimnasio
             }
         }
 
-        private void txtNombre_TextChanged_1(object sender, EventArgs e)
+        private void btnLimpiarConsulta_Click(object sender, EventArgs e)
         {
-
+            RestablecerFormulario();
         }
     }
 }

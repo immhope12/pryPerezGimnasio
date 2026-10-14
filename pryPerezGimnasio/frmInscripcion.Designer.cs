@@ -57,6 +57,7 @@
             cboxCuotas = new ComboBox();
             rbtEfectivo = new RadioButton();
             tbpConsultar = new TabPage();
+            btnLimpiarConsulta = new Button();
             lstClientes = new ListBox();
             btnConsultar = new Button();
             grpDatosPersonales.SuspendLayout();
@@ -128,7 +129,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(100, 23);
             txtNombre.TabIndex = 1;
-            txtNombre.TextChanged += txtNombre_TextChanged_1;
+            
             // 
             // lblEdad
             // 
@@ -348,6 +349,7 @@
             // 
             // tbpConsultar
             // 
+            tbpConsultar.Controls.Add(btnLimpiarConsulta);
             tbpConsultar.Controls.Add(lstClientes);
             tbpConsultar.Controls.Add(btnConsultar);
             tbpConsultar.Location = new Point(4, 24);
@@ -356,6 +358,16 @@
             tbpConsultar.TabIndex = 3;
             tbpConsultar.Text = "Consultar";
             tbpConsultar.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpiarConsulta
+            // 
+            btnLimpiarConsulta.Location = new Point(171, 177);
+            btnLimpiarConsulta.Name = "btnLimpiarConsulta";
+            btnLimpiarConsulta.Size = new Size(75, 23);
+            btnLimpiarConsulta.TabIndex = 4;
+            btnLimpiarConsulta.Text = "Limpiar";
+            btnLimpiarConsulta.UseVisualStyleBackColor = true;
+            btnLimpiarConsulta.Click += btnLimpiarConsulta_Click;
             // 
             // lstClientes
             // 
@@ -433,5 +445,6 @@
         private TabPage tbpConsultar;
         private Button btnConsultar;
         private ListBox lstClientes;
+        private Button btnLimpiarConsulta;
     }
 }
