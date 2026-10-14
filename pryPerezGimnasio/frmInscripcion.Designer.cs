@@ -129,7 +129,6 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(100, 23);
             txtNombre.TabIndex = 1;
-            
             // 
             // lblEdad
             // 

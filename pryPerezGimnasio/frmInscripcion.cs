@@ -59,9 +59,7 @@ namespace pryPerezGimnasio
             cboxCuotas.Enabled = false;
             cboxCuotas.SelectedIndex = -1;
             
-            lstClientes.Items.Clear();
-
-            
+            lstClientes.Items.Clear();          
 
 
         }
@@ -111,88 +109,99 @@ namespace pryPerezGimnasio
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            Socio socio = new Socio();
 
-            int edad = int.Parse(txtEdad.Text);
-            if (edad < 14)
+            if (txtEdad.Text=="" && txtNombre.Text=="" && txtMeses.Text=="" && cboxPlan.Text=="" && cboxTruno.Text=="" && rbtEfectivo.Checked==false && rbtTarjeta.Checked==false)
             {
-                MessageBox.Show("La edad mínima es de 14 años. No puede inscribirse.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
-            }
-
-            int meses = int.Parse(txtMeses.Text);
-            if (meses < 1 || meses > 12)
-            {
-                MessageBox.Show("La cantidad de meses debe estar entre 1 y 12.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Precio base por plan
-            double precioMensual = 0;
-            switch (cboxPlan.Text)
-            {
-                case "Musculacion": precioMensual = 15000; break;
-                case "Funcional": precioMensual = 18000; break;
-                case "Natacion": precioMensual = 22000; break;
-            }
-
-            // Suma del casillero
-            if (cboxCasillero.Checked)
-            {
-                precioMensual += 3000;
-            }
-
-            double subtotal = precioMensual * meses;
-
-            // Descuentos
-            double porcentajeDescuento = 0;
-            if (edad >= 65) porcentajeDescuento = 0.30;
-            else if (edad < 18) porcentajeDescuento = 0.25;
-            else if (cboxEstudiante.Checked) porcentajeDescuento = 0.15;
-
-            double subtotalConDescuento = subtotal - (subtotal * porcentajeDescuento);
-
-            // Modificador de Pago
-            double modificadorPago = 0;
-            if (rbtEfectivo.Checked)
-            {
-                modificadorPago = -0.10;
-            }
-            else if (rbtTarjeta.Checked)
-            {
-                if (cboxCuotas.Text == "3") modificadorPago = 0.10;
-                else if (cboxCuotas.Text == "6") modificadorPago = 0.20;
-            }
-
-            double costoFinal = subtotalConDescuento + (subtotalConDescuento * modificadorPago);
-
-            socio.Nombre = txtNombre.Text;
-            socio.Edad = edad;
-            socio.Plan = cboxPlan.Text;
-            socio.Turno = cboxTruno.Text;
-            socio.Meses = meses;
-            socio.CostoFinal = costoFinal;
-
-            // Mostrar el mensaje
-            string detalle = $"Socio: {txtNombre.Text}\n" +
-                             $"Plan: {cboxPlan.Text} ({cboxTruno.Text})\n" +
-                             $"Meses: {meses}\n" +
-                             $"Costo Final: ${costoFinal:N2}";
-
-            MessageBox.Show(detalle, "Detalle de Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            if (indiceClientes < arrayClientes.Length)
-            {
-                arrayClientes[indiceClientes] = socio;
-                indiceClientes++;
             }
             else
-            {
-                MessageBox.Show("No hay más lugar para guardar clientes.", "Array lleno",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            { 
 
-            RestablecerFormulario();
+                Socio socio = new Socio();
+
+                int edad = int.Parse(txtEdad.Text);
+                if (edad < 14)
+                {
+                    MessageBox.Show("La edad mínima es de 14 años. No puede inscribirse.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int meses = int.Parse(txtMeses.Text);
+                if (meses < 1 || meses > 12)
+                {
+                    MessageBox.Show("La cantidad de meses debe estar entre 1 y 12.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Precio base por plan
+                double precioMensual = 0;
+                switch (cboxPlan.Text)
+                {
+                    case "Musculacion": precioMensual = 15000; break;
+                    case "Funcional": precioMensual = 18000; break;
+                    case "Natacion": precioMensual = 22000; break;
+                }
+
+                // Suma del casillero
+                if (cboxCasillero.Checked)
+                {
+                    precioMensual += 3000;
+                }
+
+                double subtotal = precioMensual * meses;
+
+                // Descuentos
+                double porcentajeDescuento = 0;
+                if (edad >= 65) porcentajeDescuento = 0.30;
+                else if (edad < 18) porcentajeDescuento = 0.25;
+                else if (cboxEstudiante.Checked) porcentajeDescuento = 0.15;
+
+                double subtotalConDescuento = subtotal - (subtotal * porcentajeDescuento);
+
+                // Modificador de Pago
+                double modificadorPago = 0;
+                if (rbtEfectivo.Checked)
+                {
+                    modificadorPago = -0.10;
+                }
+                else if (rbtTarjeta.Checked)
+                {
+                    if (cboxCuotas.Text == "3") modificadorPago = 0.10;
+                    else if (cboxCuotas.Text == "6") modificadorPago = 0.20;
+                }
+
+                double costoFinal = subtotalConDescuento + (subtotalConDescuento * modificadorPago);
+
+                socio.Nombre = txtNombre.Text;
+                socio.Edad = edad;
+                socio.Plan = cboxPlan.Text;
+                socio.Turno = cboxTruno.Text;
+                socio.Meses = meses;
+                socio.CostoFinal = costoFinal;
+
+                // Mostrar el mensaje
+                string detalle = $"Socio: {txtNombre.Text}\n" +
+                                 $"Plan: {cboxPlan.Text} ({cboxTruno.Text})\n" +
+                                 $"Meses: {meses}\n" +
+                                 $"Costo Final: ${costoFinal:N2}";
+
+                MessageBox.Show(detalle, "Detalle de Inscripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (indiceClientes < arrayClientes.Length)
+                {
+                    arrayClientes[indiceClientes] = socio;
+                    indiceClientes++;
+                }
+                else
+                {
+                    MessageBox.Show("No hay más lugar para guardar clientes.", "Array lleno",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                RestablecerFormulario();
+            }
         }
 
         private void tbpDatos_Click(object sender, EventArgs e)
@@ -204,16 +213,15 @@ namespace pryPerezGimnasio
         {
             lstClientes.Items.Clear();
 
-            int indiceRecorrido = 0;
-            while (indiceRecorrido < indiceClientes)
+            for (int i = 0; i < arrayClientes.Length; i++)
             {
                 lstClientes.Items.Add(
-                    "Nombre: " + arrayClientes[indiceRecorrido].Nombre +
-                    " | Plan: " + arrayClientes[indiceRecorrido].Plan +
-                    " | Meses: " + arrayClientes[indiceRecorrido].Meses +
-                    " | Costo final: $" + arrayClientes[indiceRecorrido].CostoFinal.ToString("N2"));
-                indiceRecorrido++;
+                    "Nombre: " + arrayClientes[i].Nombre +
+                    " | Plan: " + arrayClientes[i].Plan +
+                    " | Meses: " + arrayClientes[i].Meses +
+                    " | Costo final: $" + arrayClientes[i].CostoFinal.ToString("N2"));
             }
+
         }
 
         private void btnLimpiarConsulta_Click(object sender, EventArgs e)
