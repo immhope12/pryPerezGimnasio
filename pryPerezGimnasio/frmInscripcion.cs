@@ -59,7 +59,7 @@ namespace pryLencinaGimnasio
             cboxCuotas.Enabled = false;
             cboxCuotas.SelectedIndex = -1;
 
-            
+
         }
 
         private void ValidarCamposCompletos(object sender, EventArgs e)
@@ -210,6 +210,11 @@ namespace pryLencinaGimnasio
                     " | Costo final: $" + arrayClientes[indiceRecorrido].CostoFinal.ToString("N2"));
                 indiceRecorrido++;
             }
+        }
+
+        private void txtNombre_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

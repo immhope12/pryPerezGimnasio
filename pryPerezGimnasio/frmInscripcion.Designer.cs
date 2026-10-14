@@ -57,8 +57,8 @@
             cboxCuotas = new ComboBox();
             rbtEfectivo = new RadioButton();
             tbpConsultar = new TabPage();
-            btnConsultar = new Button();
             lstClientes = new ListBox();
+            btnConsultar = new Button();
             grpDatosPersonales.SuspendLayout();
             grpDatos.SuspendLayout();
             tbpDatos.SuspendLayout();
@@ -128,6 +128,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(100, 23);
             txtNombre.TabIndex = 1;
+            txtNombre.TextChanged += txtNombre_TextChanged_1;
             // 
             // lblEdad
             // 
@@ -165,7 +166,7 @@
             tbpDatos.Location = new Point(4, 24);
             tbpDatos.Name = "tbpDatos";
             tbpDatos.Padding = new Padding(3);
-            tbpDatos.Size = new Size(297, 174);
+            tbpDatos.Size = new Size(335, 203);
             tbpDatos.TabIndex = 0;
             tbpDatos.Text = "Datos";
             tbpDatos.UseVisualStyleBackColor = true;
@@ -177,7 +178,7 @@
             tbpPlan.Location = new Point(4, 24);
             tbpPlan.Name = "tbpPlan";
             tbpPlan.Padding = new Padding(3);
-            tbpPlan.Size = new Size(297, 174);
+            tbpPlan.Size = new Size(335, 203);
             tbpPlan.TabIndex = 1;
             tbpPlan.Text = "Plan";
             tbpPlan.UseVisualStyleBackColor = true;
@@ -214,7 +215,7 @@
             lblTurno.AutoSize = true;
             lblTurno.Location = new Point(0, 56);
             lblTurno.Name = "lblTurno";
-            lblTurno.Size = new Size(38, 15);
+            lblTurno.Size = new Size(39, 15);
             lblTurno.TabIndex = 10;
             lblTurno.Text = "Turno";
             lblTurno.Click += lblTurno_Click;
@@ -275,7 +276,7 @@
             tbpPagos.Location = new Point(4, 24);
             tbpPagos.Name = "tbpPagos";
             tbpPagos.Padding = new Padding(3);
-            tbpPagos.Size = new Size(297, 174);
+            tbpPagos.Size = new Size(335, 203);
             tbpPagos.TabIndex = 2;
             tbpPagos.Text = "Pagos";
             tbpPagos.UseVisualStyleBackColor = true;
@@ -317,7 +318,7 @@
             rbtTarjeta.AutoSize = true;
             rbtTarjeta.Location = new Point(6, 47);
             rbtTarjeta.Name = "rbtTarjeta";
-            rbtTarjeta.Size = new Size(59, 19);
+            rbtTarjeta.Size = new Size(60, 19);
             rbtTarjeta.TabIndex = 1;
             rbtTarjeta.Text = "Tarjeta";
             rbtTarjeta.UseVisualStyleBackColor = true;
@@ -356,6 +357,14 @@
             tbpConsultar.Text = "Consultar";
             tbpConsultar.UseVisualStyleBackColor = true;
             // 
+            // lstClientes
+            // 
+            lstClientes.FormattingEnabled = true;
+            lstClientes.Location = new Point(6, 13);
+            lstClientes.Name = "lstClientes";
+            lstClientes.Size = new Size(321, 154);
+            lstClientes.TabIndex = 2;
+            // 
             // btnConsultar
             // 
             btnConsultar.Location = new Point(252, 177);
@@ -365,14 +374,6 @@
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
             btnConsultar.Click += btnConsultar_Click;
-            // 
-            // lstClientes
-            // 
-            lstClientes.FormattingEnabled = true;
-            lstClientes.Location = new Point(6, 13);
-            lstClientes.Name = "lstClientes";
-            lstClientes.Size = new Size(321, 154);
-            lstClientes.TabIndex = 2;
             // 
             // frmInscripcion
             // 
